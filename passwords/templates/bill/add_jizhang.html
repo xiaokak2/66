@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加记账</title>
+</head>
+<body>
+    <h1>Add zhangdan</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">确认</button>
+    </form>
+    <button type="button" > <a href="{% url 'zhang' %}">取消</a></button>
+</body>
+</html>

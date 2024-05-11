@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>记事本列表</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .notebook-item { margin-bottom: 10px; padding: 10px; border: 1px solid #ddd; }
+        .notebook-title { font-size: 20px; }
+        .notebook-content { white-space: pre-wrap; }
+        /* 添加一个类来限制笔记本列表的高度并启用垂直滚动 */
+        .scroll-container {
+            max-height: 600px; /* 根据需要调整高度以显示5条记录 */
+            overflow-y: scroll;
+            margin-bottom: 20px; /* 为滚动条留出空间 */
+        }
+        .load-more {
+            cursor: pointer;
+            background-color: #f4f4f4;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'index' %}">首页</a>
+    <h1>记事本列表</h1>
+    <div class="scroll-container">
+        {% if notebooks %}
+            {% for notebook in notebooks %}
+                <div class="notebook-item">
+                    <div class="notebook-title">{{ notebook.title }}</div>
+                    <p>创建时间：{{ notebook.created_at|date:"Y-m-d H:i:s" }}</p>
+                    <a href="{% url 'notbook_detail' notebook.pk %}">查看</a>
+                    <a href="{% url 'notbook_edit' notebook.pk %}">编辑</a>
+                    <a href="{% url 'notbook_delete' notebook.pk %}">删除</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>没有记事本。</p>
+        {% endif %}
+    </div>
+    <a href="{% url 'notbook_new' %}">添加新记事本</a>
+
+</body>
+</html>

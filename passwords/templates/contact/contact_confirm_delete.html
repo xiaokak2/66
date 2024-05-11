@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>确认删除联系人</title>
+</head>
+<body>
+    <h1>您确定要删除 {{ contact.first_name }} {{ contact.last_name }} 吗？</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">确认删除</button>
+        <a href="{% url 'contact_list' %}">取消</a>
+    </form>
+</body>
+</html>

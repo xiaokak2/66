@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>记事本详情</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { margin: 20px; padding: 20px; border: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ notebook.title }}</h1>
+        <p>{{ notebook.content }}</p>
+        <a href="{% url 'notbook_edit' notebook.pk %}">编辑</a>
+        <a href="{% url 'notbook_delete' notebook.pk %}">删除</a>
+        <a href="{% url 'notbook_list' %}">返回列表</a>
+    </div>
+</body>
+</html>

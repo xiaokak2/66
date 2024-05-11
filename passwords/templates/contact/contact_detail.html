@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>联系人详情</title>
+</head>
+<body>
+    <h1>{{ contact.first_name }} {{ contact.last_name }}</h1>
+    <p><strong>电子邮件：</strong> {{ contact.email }}</p>
+    <p><strong>电话：</strong> {{ contact.phone_number }}</p>
+    <p><strong>公司：</strong> {{ contact.company }}</p>
+    <p><strong>备注：</strong> {{ contact.notes }}</p>
+    <a href="{% url 'contact_list' %}">返回列表</a>
+</body>
+</html>

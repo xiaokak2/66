@@ -1,0 +1,189 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>登录注册</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: Arial, sans-serif;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            background-color: #f4f4f4;-->
+<!--            text-align: center;-->
+<!--        }-->
+<!--        .container {-->
+<!--            max-width: 600px;-->
+<!--            margin: 50px auto;-->
+<!--            padding: 20px;-->
+<!--            background-color: #fff;-->
+<!--            border-radius: 8px;-->
+<!--            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);-->
+<!--        }-->
+<!--        h1 {-->
+<!--            color: #333;-->
+<!--        }-->
+<!--        a {-->
+<!--            display: inline-block;-->
+<!--            margin: 10px;-->
+<!--            padding: 10px 20px;-->
+<!--            text-decoration: none;-->
+<!--            color: #fff;-->
+<!--            background-color: #007bff;-->
+<!--            border-radius: 5px;-->
+<!--            transition: background-color 0.3s ease;-->
+<!--        }-->
+<!--        a:hover {-->
+<!--            background-color: #0056b3;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <div class="container">-->
+<!--        <h1>欢迎使用速记</h1>-->
+<!--        <p id="datetime"></p>-->
+
+<!--        <a href="{% url 'index' %}">首页</a>-->
+<!--        <a href="{% url 'notbook_list' %}">记事本</a>-->
+<!--        <a href="{% url 'zhang' %}">记账本</a>-->
+<!--        <a href="{% url 'mimabook' %}">密码本</a>-->
+<!--        <a href="{% url 'contact_list' %}">联系人</a>-->
+<!--        <a href="{% url 'address_list' %}">地址</a>-->
+
+<!--&lt;!&ndash;        <a >地址管理</a>&ndash;&gt;-->
+
+<!--    </div>-->
+
+<!--    <script>-->
+<!--        // 获取并显示当前时间-->
+<!--        function showTime() {-->
+<!--            const now = new Date();-->
+<!--            const hours = now.getHours();-->
+<!--            const minutes = now.getMinutes();-->
+<!--            const seconds = now.getSeconds();-->
+<!--            document.getElementById('datetime').innerText = `当前时间：${hours}:${minutes}:${seconds}`;-->
+<!--        }-->
+
+<!--        // 更新时间-->
+<!--        setInterval(() => {-->
+<!--            showTime();-->
+<!--        }, 1000);-->
+
+<!--        // 定时器函数，每小时更新天气信息-->
+<!--        function updateWeather() {-->
+<!--            var weatherFrame = document.getElementById('weatherFrame');-->
+<!--            weatherFrame.src = "https://i.tianqi.com/?c=code&a=getcode&id=55&icon=1"; // 更新iframe的src-->
+<!--        }-->
+
+<!--        // 页面加载时首次更新天气信息-->
+<!--        updateWeather();-->
+
+<!--        // 每小时更新一次天气信息-->
+<!--        setInterval(updateWeather, 3600000); // 3600000毫秒 = 1小时-->
+<!--    </script>-->
+<!--</body>-->
+<!--   <iframe width="160" height="100" frameborder="0" scrolling="no" hspace="0" src="https://i.tianqi.com/?c=code&a=getcode&id=81&icon=1"></iframe>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: flex;
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 200px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        nav {
+            width: 20%;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #007bff;
+            background-color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #0056b3;
+            color: #fff;
+        }
+        .content {
+            width: 60%;
+            padding: 15px;
+            margin-left: 260px;
+            float:right;
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <h1>导航栏</h1>
+            <a href="{% url 'index' %}">首页</a>
+            <a href="{% url 'notbook_list' %}">记事本</a>
+            <a href="{% url 'zhang' %}">记账本</a>
+            <a href="{% url 'mimabook' %}">密码本</a>
+            <a href="{% url 'contact_list' %}">联系人</a>
+            <a href="{% url 'address_list' %}">地址</a>
+        </nav>
+        <div class="content">
+            <h1>欢迎使用速记</h1>
+            <p id="datetime"></p>
+            <iframe width="300" height="300" frameborder="0" scrolling="no" hspace="0" src="https://i.tianqi.com/?c=code&a=getcode&id=55&icon=1"></iframe>
+        </div>
+    </div>
+
+
+    <script>
+        // 获取并显示当前时间
+        function showTime() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            document.getElementById('datetime').innerText = `当前时间：${hours}:${minutes}:${seconds}`;
+        }
+
+        // 更新时间
+        setInterval(() => {
+            showTime();
+        }, 1000);
+
+        // 定时器函数，每小时更新天气信息
+        function updateWeather() {
+            var weatherFrame = document.getElementById('weatherFrame');
+            weatherFrame.src = "https://i.tianqi.com/?c=code&a=getcode&id=55&icon=1"; // 更新iframe的src
+        }
+
+        // 页面加载时首次更新天气信息
+        updateWeather();
+
+        // 每小时更新一次天气信息
+        setInterval(updateWeather, 3600000); // 3600000毫秒 = 1小时
+    </script>
+</body>
+
+</html>

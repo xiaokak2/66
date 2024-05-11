@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Password</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        li:hover {
+            background-color: #f0f0f0;
+        }
+
+        .eye-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-image: url('password_manager/tuku/liuwang.jpg);
+            background-size: cover;
+            cursor: pointer;
+        }
+
+        .password {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'index' %}">首页</a>
+    <h1>密码本</h1>
+    <ul>
+        {% for password in passwords %}
+            <li>
+                用途：{{ password.website }} 名称： {{ password.username }} 密码：
+                <span class="password">{{ password.password }}</span>
+                <a href="{% url 'rect_password' password.id %}">修改</a>
+                <a href="{% url 'delete_password' password.id %}">删除</a>
+                <!-- 添加复制按钮 -->
+                <button onclick="copyText('{{ password.username }}', '{{ password.password }}')">复制用户名和密码</button>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_password' %}">添加密码</a>
+    <script>
+        // 复制用户名和密码的函数
+        function copyText(username, password) {
+            var textToCopy = username + ' ' + password; // 将用户名和密码拼接为一个字符串
+            navigator.clipboard.writeText(textToCopy).then(function() {
+                alert("用户名和密码已复制到剪贴板。");
+            }, function(error) {
+                alert("复制失败，请手动复制。");
+            });
+        }
+    </script>
+</body>
+</html>

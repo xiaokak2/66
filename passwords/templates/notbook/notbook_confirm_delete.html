@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>确认删除</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { margin: 20px; padding: 20px; border: 1px solid #ddd; }
+        .confirm-btn { background-color: #f44336; color: white; padding: 10px 20px; border: none; cursor: pointer; }
+        .confirm-btn:hover { background-color: #e53935; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>确认删除</h1>
+        <p>您确定要删除记事本 "{{ notebook.title }}" 吗？</p>
+        <form method="post" action="{% url 'notbook_delete' notebook.pk %}">
+            {% csrf_token %}
+            <button type="submit" class="confirm-btn">确认删除</button>
+        </form>
+        <a href="{% url 'notbook_list' %}">取消</a>
+    </div>
+</body>
+</html>

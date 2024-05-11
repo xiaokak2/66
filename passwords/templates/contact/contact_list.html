@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>联系人列表</title>
+</head>
+<body>
+    <h1>联系人列表</h1>
+    <a href="{% url 'index' %}">首页</a>
+    <a href="{% url 'contact_create' %}">添加新联系人</a>
+    <ul>
+        {% for contact in contacts %}
+            <li>
+                {{ contact.first_name }} {{ contact.last_name }} - {{ contact.email }}
+                (<a href="{% url 'contact_detail' contact.pk %}">查看</a> |
+                <a href="{% url 'contact_update' contact.pk %}">编辑</a> |
+                <a href="{% url 'contact_delete' contact.pk %}">删除</a>)
+            </li>
+        {% empty %}
+            <li>没有联系人。</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
